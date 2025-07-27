@@ -1,36 +1,31 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report
+from sklearn.preprocessing import LabelEncoder
 import joblib
 
-# Chargement des données
-data = pd.read_csv("vibrations_pieces.csv")
+# Charger le fichier CSV
+df = pd.read_csv("vibrations_pieces.csv")
 
-# Séparation features / labels
-X = data.drop("label", axis=1)
-y = data["label"]
+# Définir les features utilisées pour l'entraînement
+features = ["RMS", "Kurtosis", "Skewness", "Peak2Peak"]
 
-# Encodage simple des labels
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-y_encoded = le.fit_transform(y)
+# Vérification que toutes les colonnes existent
+if not all(f in df.columns for f in features + ["label"]):
+    raise ValueError(f"Le fichier CSV doit contenir les colonnes : {features + ['label']}")
 
-# Split train/test avec stratification
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y_encoded, test_size=0.2, stratify=y_encoded, random_state=42
-)
+# Séparation des variables
+X = df[features]
+y = df["label"]
 
-# Modèle Random Forest
+# Encodage de la cible (Label)
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(y)
+
+# Entraîner le modèle
 model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
+model.fit(X, y_encoded)
 
-# Prédictions
-y_pred = model.predict(X_test)
+# Sauvegarder le modèle et l'encodeur ensemble
+joblib.dump((model, label_encoder), "model.pkl")
 
-# Rapport de classification
-print(classification_report(y_test, y_pred, target_names=le.classes_))
-
-# Sauvegarde du modèle
-joblib.dump((model, le), "model.pkl")
-print("Modèle sauvegardé sous 'model.pkl'")
+print("✅ Modèle entraîné et sauvegardé sous 'model.pkl'")
