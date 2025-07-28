@@ -6,7 +6,7 @@ Ce projet répond à une problématique réelle dans le secteur ferroviaire maro
 optimiser la maintenance préventive des trains à grande vitesse grâce à l’intelligence artificielle.
 
 > Un projet de Machine Learning dédié à la **détection automatique de défauts sur les pièces critiques** (freins, moteurs, roues) d’un train à grande vitesse via l’analyse vibratoire.
-> ## 🧠 Objectif
+> ##  Objectif
 Ce projet vise à **anticiper les pannes mécaniques** des composants ferroviaires afin de :
 
 - ✅ Garantir la sécurité des passagers
@@ -24,7 +24,8 @@ L’application :
 - Fournit des alertes visuelles et des statistiques claires sur l’état des composants
 
 ## 🖼️ Aperçu de l'application
-<img width="2559" height="689" alt="image" src="https://github.com/user-attachments/assets/fb3d3151-65c9-458a-b482-8ca01cb3d254" />
+<img width="2559" height="708" alt="image" src="https://github.com/user-attachments/assets/ca5e4aeb-da39-486d-b250-a75b6592da77" />
+
 
 
 
