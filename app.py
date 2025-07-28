@@ -6,6 +6,7 @@ import seaborn as sns
 
 # Configuration générale de la page
 st.set_page_config(
+
     page_title="Maintenance Prédictive - Abderrahim Aghzal",
     page_icon="🛠️",
     layout="centered",
@@ -26,18 +27,24 @@ st.markdown(
 model, label_encoder = joblib.load("model.pkl")
 
 # Titre principal + intro
-st.title("🛠️ Maintenance Prédictive")
+st.title("🛠️ Maintenance Prédictive - AI Rail ")
 st.markdown("""
-Optimisez la fiabilité de vos machines grâce à la détection automatique des défauts des pièces.  
-Le système analyse les vibrations pour anticiper les pannes.  
-Abderrahim Aghzal AI_Predic  
+🎯 **Ce projet est dédié à la maintenance prédictive des composants critiques d’un train à grande vitesse, tels que les freins, le moteur et les roues.**
+  
+
+Grâce à l’analyse des vibrations et le Machine Learning, le système anticipe les défaillances mécaniques  
+afin de garantir la sécurité des passagers, éviter les interruptions de service  
+et contribuer à la modernisation du transport ferroviaire national.  
+
+© 2025 Abderrahim Aghzal AI Rail.  
 """)
 
 # Sidebar infos/contact
 with st.sidebar:
     st.header("ℹ️ À propos")
     st.write("""
-    Ce projet détecte les défauts internes et externes sur des pièces industrielles via l'analyse des vibrations.
+    Ce projet anticipe les défaillances de composants ferroviaires  
+    (grâce à l’analyse vibratoire) pour des trains à grande vitesse.
     """)
     st.write("👨‍💻 Par : Abderrahim Aghzal")
     st.write("📧 Contact : abderrahimaghzal1@gmail.com")
@@ -99,4 +106,4 @@ else:
 
 # Footer personnalisé
 st.markdown("---")
-st.markdown("© 2025 Abderrahim Aghzal AI_Predic")
+st.markdown("© 2025 Abderrahim Aghzal AI Rail")

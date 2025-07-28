@@ -6,26 +6,24 @@ import joblib
 # Charger le fichier CSV
 df = pd.read_csv("vibrations_pieces.csv")
 
-# Définir les features utilisées pour l'entraînement
 features = ["RMS", "Kurtosis", "Skewness", "Peak2Peak"]
+target = "label"
 
-# Vérification que toutes les colonnes existent
-if not all(f in df.columns for f in features + ["label"]):
-    raise ValueError(f"Le fichier CSV doit contenir les colonnes : {features + ['label']}")
+# Vérifier colonnes requises
+if not all(f in df.columns for f in features + [target]):
+    raise ValueError(f"Le fichier CSV doit contenir les colonnes : {features + [target]}")
 
-# Séparation des variables
 X = df[features]
-y = df["label"]
+y = df[target]
 
-# Encodage de la cible (Label)
+# Encodage du label
 label_encoder = LabelEncoder()
 y_encoded = label_encoder.fit_transform(y)
 
-# Entraîner le modèle
+# Entraîner modèle
 model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X, y_encoded)
 
-# Sauvegarder le modèle et l'encodeur ensemble
+# Sauvegarde
 joblib.dump((model, label_encoder), "model.pkl")
-
 print("✅ Modèle entraîné et sauvegardé sous 'model.pkl'")

@@ -3,9 +3,11 @@ import pandas as pd
 
 np.random.seed(42)
 
-n_samples = 1000
+# Distribution réaliste
+n_normal = 8000
+n_inner = 1433
+n_outer = 567
 
-# Création de données simulées par classe
 def generate_class_data(label, size):
     if label == "Normal":
         rms = np.random.normal(0.01, 0.005, size)
@@ -31,17 +33,19 @@ def generate_class_data(label, size):
         "label": [label]*size
     })
 
-# Nombre d'échantillons par classe (environ équilibré)
-n_per_class = n_samples // 3
+# Génération des données
+df_normal = generate_class_data("Normal", n_normal)
+df_inner = generate_class_data("Inner_Fault", n_inner)
+df_outer = generate_class_data("Outer_Fault", n_outer)
 
-df_normal = generate_class_data("Normal", n_per_class)
-df_inner = generate_class_data("Inner_Fault", n_per_class)
-df_outer = generate_class_data("Outer_Fault", n_samples - 2*n_per_class)
-
-# Concaténation
+# Fusion et sauvegarde
 df = pd.concat([df_normal, df_inner, df_outer], ignore_index=True)
 
-# Sauvegarde CSV
-df.to_csv("vibrations_pieces.csv", index=False)
+# Supprimer ancien fichier si existe
+import os
+if os.path.exists("vibrations_pieces.csv"):
+    os.remove("vibrations_pieces.csv")
 
-print("Dataset simulé créé et sauvegardé sous 'vibrations_pieces.csv' avec", len(df), "échantillons.")
+df.to_csv("vibrations_pieces.csv", index=False)
+print(f"✅ Dataset simulé créé avec {len(df)} échantillons.")
+print(df['label'].value_counts())
