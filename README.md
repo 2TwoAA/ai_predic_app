@@ -1,5 +1,5 @@
 Hello github
-<img width="2559" height="689" alt="image" src="https://github.com/user-attachments/assets/fb3d3151-65c9-458a-b482-8ca01cb3d254" />
+
 # 🚆 AI Rail – Maintenance Prédictive pour Trains à Grande Vitesse
 
 Ce projet répond à une problématique réelle dans le secteur ferroviaire marocain :
@@ -24,7 +24,7 @@ L’application :
 - Fournit des alertes visuelles et des statistiques claires sur l’état des composants
 
 ## 🖼️ Aperçu de l'application
-<img width="2559" height="710" alt="image" src="https://github.com/user-attachments/assets/6ce3af4c-939a-4f83-9e30-030c99f632f9" />
+<img width="2559" height="689" alt="image" src="https://github.com/user-attachments/assets/fb3d3151-65c9-458a-b482-8ca01cb3d254" />
 
 
 
