@@ -1,5 +1,3 @@
-Hello github
-
 # 🚆 AI Rail – Maintenance Prédictive pour Trains à Grande Vitesse
 
 Ce projet répond à une problématique réelle dans le secteur ferroviaire marocain :
